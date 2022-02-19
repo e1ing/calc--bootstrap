@@ -1,12 +1,13 @@
 import {Button, Col, Row} from "react-bootstrap";
 import React from "react";
-import {useDispatch} from "react-redux";
-import {setButton} from "../redux/calc-reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {setButton, setClean, setResult} from "../redux/calc-reducer";
+import {AppRootStateType} from "../redux/store";
 
 export const ButtonsPanel = () => {
 
     const dispatch = useDispatch()
-
+    const num = useSelector<AppRootStateType, string>(state => state.calc.num)
     return (
         <>
             <Row className="justify-content-md-center" xs="auto">
@@ -28,7 +29,7 @@ export const ButtonsPanel = () => {
                 <Col> <Button onClick={()=>{dispatch(setButton("*"))}} size="lg" variant="outline-primary">x</Button>{' '}</Col>
             </Row>
             <Row className="justify-content-md-center" xs="auto">
-                <Col><Button size="lg" variant="outline-primary">CE</Button>{' '}</Col>
+                <Col><Button onClick={()=>{dispatch(setClean(num))}}  size="lg" variant="outline-primary">CE</Button>{' '}</Col>
                 <Col> <Button onClick={()=>{dispatch(setButton("0"))}} size="lg" variant="outline-primary">0</Button>{' '}</Col>
                 <Col> <Button onClick={()=>{dispatch(setButton("."))}} size="lg" variant="outline-primary">.</Button>{' '}</Col>
                 <Col> <Button onClick={()=>{dispatch(setButton("/"))}}size="lg" variant="outline-primary">/</Button>{' '}</Col>
@@ -36,7 +37,7 @@ export const ButtonsPanel = () => {
             <Row className="justify-content-md-center">
                 <Col  xs sm="5">
                     <div className="d-grid gap-2">
-                        <Button className={"btn btn-lg btn-block"} variant="outline-primary">=</Button>
+                        <Button onClick={()=>{dispatch(setResult(num))}} className={"btn btn-lg btn-block"} variant="outline-primary">=</Button>
                     </div>
                 </Col>
             </Row>
