@@ -8,9 +8,9 @@ export const Display =() => {
     const result = useSelector<AppRootStateType, string>(state => state.calc.result)
 
     return (
-            <Row className="justify-content-md-center" xs="auto">
-                <Col xs sm="5">
-                    <FormControl aria-label="Example text with two button addons"
+            <Row className="justify-content-md-center"  >
+                <Col  lg={11} style={{padding: "10px"}}>
+                    <FormControl aria-label=""
                     value={result.length===0 ? num : result}/>
                 </Col>
             </Row>

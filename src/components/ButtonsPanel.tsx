@@ -3,6 +3,7 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setButton, setClean, setResult} from "../redux/calc-reducer";
 import {AppRootStateType} from "../redux/store";
+import {CustomButton} from "./CustomButton";
 
 export const ButtonsPanel = () => {
 
@@ -11,33 +12,33 @@ export const ButtonsPanel = () => {
     return (
         <>
             <Row className="justify-content-md-center" xs="auto">
-                <Col><Button onClick={()=>{dispatch(setButton("1"))}} size="lg" variant="outline-primary">1</Button>{' '}</Col>
-                <Col> <Button onClick={()=>{dispatch(setButton("2"))}} size="lg" variant="outline-primary">2</Button>{' '}</Col>
-                <Col> <Button onClick={()=>{dispatch(setButton("3"))}} size="lg" variant="outline-primary">3</Button>{' '}</Col>
-                <Col> <Button onClick={()=>{dispatch(setButton("+"))}} size="lg" variant="outline-primary">+</Button>{' '}</Col>
+                <Col><CustomButton value={"1"} onClick={()=>{dispatch(setButton("1"))}}/></Col>
+                <Col> <CustomButton  value={"2"} onClick={()=>{dispatch(setButton("2"))}} /></Col>
+                <Col> <CustomButton  value={"3"} onClick={()=>{dispatch(setButton("3"))}} /></Col>
+                <Col> <CustomButton value={"+"} onClick={()=>{dispatch(setButton("+"))}}/></Col>
             </Row>
             <Row className="justify-content-md-center" xs="auto">
-                <Col ><Button onClick={()=>{dispatch(setButton("4"))}} size="lg" variant="outline-primary">4</Button>{' '}</Col>
-                <Col> <Button onClick={()=>{dispatch(setButton("5"))}} size="lg" variant="outline-primary">5</Button>{' '}</Col>
-                <Col> <Button onClick={()=>{dispatch(setButton("6"))}} size="lg" variant="outline-primary">6</Button>{' '}</Col>
-                <Col> <Button onClick={()=>{dispatch(setButton("-"))}} size="lg" variant="outline-primary">-</Button>{' '}</Col>
+                <Col ><CustomButton value={"4"} onClick={()=>{dispatch(setButton("4"))}}/></Col>
+                <Col> <CustomButton value={"5"} onClick={()=>{dispatch(setButton("5"))}}/></Col>
+                <Col> <CustomButton value={"6"} onClick={()=>{dispatch(setButton("6"))}}/></Col>
+                <Col> <CustomButton value={"-"} onClick={()=>{dispatch(setButton("-"))}}/></Col>
             </Row>
             <Row className="justify-content-md-center" xs="auto">
-                <Col><Button onClick={()=>{dispatch(setButton("7"))}} size="lg" variant="outline-primary">7</Button>{' '}</Col>
-                <Col> <Button onClick={()=>{dispatch(setButton("8"))}} size="lg" variant="outline-primary">8</Button>{' '}</Col>
-                <Col> <Button onClick={()=>{dispatch(setButton("9"))}} size="lg" variant="outline-primary">9</Button>{' '}</Col>
-                <Col> <Button onClick={()=>{dispatch(setButton("*"))}} size="lg" variant="outline-primary">x</Button>{' '}</Col>
+                <Col><CustomButton  value={"7"} onClick={()=>{dispatch(setButton("7"))}}/></Col>
+                <Col> <CustomButton   value={"8"} onClick={()=>{dispatch(setButton("8"))}}/></Col>
+                <Col> <CustomButton  value={"9"} onClick={()=>{dispatch(setButton("9"))}}/></Col>
+                <Col> <CustomButton  value={"*"} onClick={()=>{dispatch(setButton("*"))}}/></Col>
             </Row>
             <Row className="justify-content-md-center" xs="auto">
-                <Col><Button onClick={()=>{dispatch(setClean(num))}}  size="lg" variant="outline-primary">CE</Button>{' '}</Col>
-                <Col> <Button onClick={()=>{dispatch(setButton("0"))}} size="lg" variant="outline-primary">0</Button>{' '}</Col>
-                <Col> <Button onClick={()=>{dispatch(setButton("."))}} size="lg" variant="outline-primary">.</Button>{' '}</Col>
-                <Col> <Button onClick={()=>{dispatch(setButton("/"))}}size="lg" variant="outline-primary">/</Button>{' '}</Col>
+                <Col><CustomButton  value={"CE"} onClick={()=>{dispatch(setClean(num))}} /></Col>
+                <Col> <CustomButton  value={"0"} onClick={()=>{dispatch(setButton("0"))}}/></Col>
+                <Col> <CustomButton  value={"."} onClick={()=>{dispatch(setButton("."))}}/></Col>
+                <Col> <CustomButton  value={"/"} onClick={()=>{dispatch(setButton("/"))}}/></Col>
             </Row>
-            <Row className="justify-content-md-center">
-                <Col  xs sm="5">
-                    <div className="d-grid gap-2">
-                        <Button onClick={()=>{dispatch(setResult(num))}} className={"btn btn-lg btn-block"} variant="outline-primary">=</Button>
+            <Row className="justify-content-md-center" xs="auto">
+                <Col lg={11} style={{padding: "10px"}}>
+                    <div className="d-grid gap-2" >
+                        <Button onClick={()=>{dispatch(setResult(num))}}  size="lg" variant="primary" style={{minWidth: "60px"}}>=</Button>
                     </div>
                 </Col>
             </Row>

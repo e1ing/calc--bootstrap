@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.module.css';
+import {Container, Card, Row} from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Display} from "./components/Display";
+import {ButtonsPanel} from "./components/ButtonsPanel";
+import s from "./App.module.css"
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (
+        <Container >
+            <h2 className={s.h2}>Calculator app</h2>
+            <Row className="justify-content-md-center" xs="auto">
+            <Card border="primary"
+                   style={{ width: '25rem' }}
+                   className="mb-2"
+                  bg="light"
+            >
+                <Card.Body>
+                    <Display/>
+                    <ButtonsPanel/>
+                </Card.Body>
+            </Card>
+            </Row>
+        </Container>
+    );
 }
 
 export default App;
